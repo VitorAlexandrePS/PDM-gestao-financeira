@@ -35,6 +35,13 @@ async function request(path, options = {}) {
 }
 
 export const api = {
+  // login
+  login: (data) =>
+    request("/auth/login", {
+      method: "POST",
+      body: JSON.stringify(data),
+    }),
+
   /**
    * Lista todas as categorias cadastradas.
    * @returns {Promise<Array>} Lista de categorias ordenadas por displayName.

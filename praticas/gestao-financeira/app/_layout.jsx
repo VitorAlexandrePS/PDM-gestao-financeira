@@ -7,8 +7,15 @@ export default function RootLayout() {
   return (
     <GlobalState>
       <StatusBar backgroundColor={colors.primary} style="light" />
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack initialRouteName="login">
+        <Stack.Screen
+          name="login"
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="(tabs)"
+          options={{ headerShown: false }}
+        />
         <Stack.Screen name="+not-found" />
       </Stack>
     </GlobalState>

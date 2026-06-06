@@ -22,6 +22,7 @@ export default function GlobalState({ children }) {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [user, setUser] = useState(null);
 
   /**
    * Recarrega categorias e transações do servidor em paralelo.
@@ -43,6 +44,17 @@ export default function GlobalState({ children }) {
     } finally {
       setLoading(false);
     }
+  }, []);
+
+  const login = useCallback(async (username, password) => {
+    const loggedUser = await api.login({
+      username,
+      password,
+    });
+
+    setUser(loggedUser);
+
+    return loggedUser;
   }, []);
 
   useEffect(() => {
@@ -70,6 +82,17 @@ export default function GlobalState({ children }) {
   const removeTransaction = useCallback(async (id) => {
     await api.deleteTransaction(id);
     setTransactions((prev) => prev.filter((t) => t.id !== id));
+  }, []);
+
+  //  Edita transação
+  const editTransaction = useCallback(async (id, data) => {
+    const updated = await api.updateTransaction(id, data);
+
+    setTransactions((prev) =>
+      prev.map((t) => (t.id === id ? updated : t))
+    );
+
+    return updated;
   }, []);
 
   /**
@@ -105,9 +128,13 @@ export default function GlobalState({ children }) {
         categories,
         loading,
         error,
+        user,
+        login,
+        setUser,
         refresh,
         addTransaction,
         removeTransaction,
+        editTransaction,
         addCategory,
         removeCategory,
       }}

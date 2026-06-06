@@ -1,0 +1,245 @@
+{
+  "info": {
+    "_postman_id": "5e1d0495-f785-4df9-a9ab-12510d160fcd",
+    "name": "Gestão Financeira API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55445846",
+    "_collection_link": "https://go.postman.co/collection/55445846-5e1d0495-f785-4df9-a9ab-12510d160fcd?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "health-check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "listar-categorias",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/categories",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "categories"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "criar-categoria",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"health\",\r\n  \"displayName\": \"Saúde\",\r\n  \"icon\": \"favorite\",\r\n  \"background\": \"#FFB6B6\",\r\n  \"isIncome\": false\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/categories",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "categories"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "atualizar-categoria",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"displayName\": \"Saúde e Bem-estar\" }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/categories/cmq03e6um0000vu9rb5e2u3rx",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "categories",
+            "cmq03e6um0000vu9rb5e2u3rx"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "excluir-categoria",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"health\",\r\n  \"displayName\": \"Saúde\",\r\n  \"icon\": \"favorite\",\r\n  \"background\": \"#FFB6B6\",\r\n  \"isIncome\": false\r\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/categories/cmq03aqop00006nuytxqxblgr",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "categories",
+            "cmq03aqop00006nuytxqxblgr"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "criar-transacao",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"description\": \"Salário de outubro\",\r\n  \"value\": 3500.50,\r\n  \"date\": \"2026-04-29\",\r\n  \"categoryId\": \"cmq03aqop00006nuytxqxblgr\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/transactions",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "transactions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "listar-transacao",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"description\": \"Salário de outubro\",\r\n  \"value\": 3500.50,\r\n  \"date\": \"2026-04-29\",\r\n  \"categoryId\": \"cmq03aqop00006nuytxqxblgr\"\r\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/transactions",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "transactions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "excluir-transacao",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"description\": \"Salário de outubro\",\r\n  \"value\": 3500.50,\r\n  \"date\": \"2026-04-29\",\r\n  \"categoryId\": \"cmq03aqop00006nuytxqxblgr\"\r\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/transactions/cmq04dj150001g258pxsz2nhu",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "transactions",
+            "cmq04dj150001g258pxsz2nhu"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "validar-erros",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"description\": \"\" }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/transactions",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "transactions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "teste-login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"username\": \"admin\",\r\n  \"password\": \"1234\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/auth/login",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
